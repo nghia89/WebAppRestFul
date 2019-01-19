@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,6 +10,8 @@ namespace WebAppRestFul.Moadels
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage ="phải  nhập sku")]
+        [StringLength(8,ErrorMessage =("SKUMinAndMaxLengthErrorMsg"),MinimumLength =6)]
         public string Sku { get; set; }
 
         public float Price { get; set; }

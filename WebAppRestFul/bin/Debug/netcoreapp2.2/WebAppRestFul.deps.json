@@ -34,6 +34,14 @@
         "runtime": {
           "WebAppRestFul.dll": {}
         },
+        "resources": {
+          "en/WebAppRestFul.resources.dll": {
+            "locale": "en"
+          },
+          "vi/WebAppRestFul.resources.dll": {
+            "locale": "vi"
+          }
+        },
         "compile": {
           "WebAppRestFul.dll": {}
         }

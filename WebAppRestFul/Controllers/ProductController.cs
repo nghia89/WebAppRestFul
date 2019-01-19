@@ -2,31 +2,51 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Logging;
 using WebAppRestFul.Dtos;
+using WebAppRestFul.Extensions;
 using WebAppRestFul.Filters;
 using WebAppRestFul.Moadels;
+using WebAppRestFul.Resources;
 
 namespace WebAppRestFul.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/{culture}/[controller]")]
     [ApiController]
+    [MiddlewareFilter(typeof(LocalizationPipeline))]
     public class ProductController : ControllerBase
     {
         private readonly string _connectionString;
-        public ProductController(IConfiguration configuration)
+        private readonly ILogger<ProductController> _logger;
+        private readonly IStringLocalizer<ProductController> _localizer;
+        private readonly LocService _locService;
+        public ProductController(IConfiguration configuration,
+            ILogger<ProductController> logger
+            , IStringLocalizer<ProductController> localizer,
+            LocService locservice)
         {
             _connectionString = configuration.GetConnectionString("DbConnectionString");
+            _logger = logger;
+            _localizer = localizer;
+            _locService = locservice;
+
+
         }
         // GET: api/Product
         [HttpGet]
         public async Task<IEnumerable<Product>> Get()
         {
+            var culture = CultureInfo.CurrentCulture.Name;
+            string text = _localizer["Test"];
+            string text1 = _locService.GetLocalizedHtmlString("ForgotPassword");
             using (var conn = new SqlConnection(_connectionString))
             {
                 if (conn.State == System.Data.ConnectionState.Closed)

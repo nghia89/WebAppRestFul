@@ -26,3 +26,14 @@ D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\WebAppRestFul.AssemblyInf
 D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\WebAppRestFul.RazorTargetAssemblyInfo.cache
 D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\WebAppRestFul.dll
 D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\WebAppRestFul.pdb
+D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\WebAppRestFul.csproj.GenerateResource.cache
+D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\WebAppRestFul.Resources.Controller.ProductController_vi.resources
+D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\WebAppRestFul.Resources.Models.Product.vn.resources
+D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\WebAppRestFul.Resources.Controller.ProductController.en.resources
+D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\WebAppRestFul.Resources.Models.Product.en.resources
+D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\WebAppRestFul.Resources.SharedResource.en.resources
+D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\WebAppRestFul.Resources.SharedResource.vi.resources
+D:\WebAppRestFul\WebAppRestFul\bin\Debug\netcoreapp2.2\en\WebAppRestFul.resources.dll
+D:\WebAppRestFul\WebAppRestFul\bin\Debug\netcoreapp2.2\vi\WebAppRestFul.resources.dll
+D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\en\WebAppRestFul.resources.dll
+D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\vi\WebAppRestFul.resources.dll

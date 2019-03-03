@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebAppRestFul.Moadels
 {
@@ -10,8 +7,8 @@ namespace WebAppRestFul.Moadels
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="phải  nhập sku")]
-        [StringLength(8,ErrorMessage =("SKUMinAndMaxLengthErrorMsg"),MinimumLength =6)]
+        [Required(ErrorMessage = "phải  nhập sku")]
+        [StringLength(8, ErrorMessage = ("SKUMinAndMaxLengthErrorMsg"), MinimumLength = 6)]
         public string Sku { get; set; }
 
         public float Price { get; set; }
@@ -25,5 +22,13 @@ namespace WebAppRestFul.Moadels
         public int ViewCount { get; set; }
 
         public DateTime CreatedAt { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string SeoDescription { get; set; }
+        public string SeoAlias { get; set; }
+        public string SeoTitle { get; set; }
+        public string SeoKeyword { get; set; }
+        public string Content { get; set; }
+
     }
 }

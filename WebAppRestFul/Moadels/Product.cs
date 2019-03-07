@@ -29,6 +29,8 @@ namespace WebAppRestFul.Moadels
         public string SeoTitle { get; set; }
         public string SeoKeyword { get; set; }
         public string Content { get; set; }
+        public string CategoryName { get; set; }
+        public string CategoryIds { get; set; }
 
     }
 }

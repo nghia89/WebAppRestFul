@@ -122,6 +122,7 @@ namespace WebAppRestFul.Controllers
                 paramaters.Add("@isActive", product.IsActive);
                 paramaters.Add("@imageUrl", product.ImageUrl);
                 paramaters.Add("@language", CultureInfo.CurrentCulture.Name);
+                paramaters.Add("@categoryIds", product.CategoryIds);
                 paramaters.Add("@id", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 var result = await conn.ExecuteAsync("Create_Product", paramaters, null, null, System.Data.CommandType.StoredProcedure);
 
@@ -153,6 +154,7 @@ namespace WebAppRestFul.Controllers
                 paramaters.Add("@isActive", product.IsActive);
                 paramaters.Add("@imageUrl", product.ImageUrl);
                 paramaters.Add("@language", CultureInfo.CurrentCulture.Name);
+                paramaters.Add("@categoryIds", product.CategoryIds);
                 await conn.ExecuteAsync("Update_Product", paramaters, null, null, CommandType.StoredProcedure);
                 return Ok();
             }

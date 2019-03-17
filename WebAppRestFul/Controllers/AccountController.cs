@@ -14,7 +14,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using WebAppRestFul.Constants;
+using WebAppRestFul.Utilities.Constants;
 using WebAppRestFul.Extensions;
 using WebAppRestFul.Filters;
 using WebAppRestFul.Data.Models;

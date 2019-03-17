@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using WebAppRestFul.Constants;
+using WebAppRestFul.Utilities.Constants;
 
 namespace WebAppRestFul.Filters
 {

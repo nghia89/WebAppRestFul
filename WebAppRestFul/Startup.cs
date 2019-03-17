@@ -9,7 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Reflection;
 using WebAppRestFul.Data;
 using WebAppRestFul.Models;
@@ -81,7 +83,33 @@ namespace WebAppRestFul
                  });
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "Rest API Dapper", Version = "v1" });
+                //c.SwaggerDoc("v1", new Info { Title = "Rest API Dapper", Version = "v1" });
+                c.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "My Project",
+                    Description = "TEDU API Swagger surface",
+                    Contact = new Contact
+                    {
+                        Name = "nghia nguyen",
+                        Email = "hangnghia110@gmail.com",
+                        Url = "https://www.tedu.com.vn"
+                    },
+                    License = new License { Name = "MIT", Url = "https://github.com/nghia89" }
+                });
+
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                {
+                    In = "header",
+                    Description = "Please insert JWT with Bearer into field",
+                    Name = "Authorization",
+                    Type = "apiKey"
+                });
+
+                c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
+                {
+                    { "Bearer", new string[] { } }
+                });
             });
         }
 
@@ -98,16 +126,29 @@ namespace WebAppRestFul
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
             // specifying the Swagger JSON endpoint.
+            app.UseSwagger(c =>
+            {
+                c.PreSerializeFilters.Add((document, request) =>
+                {
+                    var paths = document.Paths.ToDictionary(item => item.Key.ToLowerInvariant(), item => item.Value);
+                    document.Paths.Clear();
+                    foreach (var pathItem in paths)
+                    {
+                        document.Paths.Add(pathItem.Key, pathItem.Value);
+                    }
+                });
+            });
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rest API V1");
             });
+            app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseMvc();
         }

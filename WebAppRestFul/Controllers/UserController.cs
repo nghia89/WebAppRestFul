@@ -28,6 +28,7 @@ namespace WebAppRestFul.Controllers
         }
         // GET: api/Product
         [HttpGet]
+        [ClaimRequirement(FunctionCode.SYSTEM_USER, ActionCode.VIEW)]
         public async Task<IActionResult> Get()
         {
             using (var conn = new SqlConnection(_connectionString))

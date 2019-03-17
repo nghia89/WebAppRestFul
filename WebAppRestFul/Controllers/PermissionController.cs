@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using WebAppRestFul.Extensions;
-using WebAppRestFul.ViewModels;
+using WebAppRestFul.Data.ViewModels;
 
 namespace WebAppRestFul.Controllers
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebAppRestFul.Dtos
+namespace WebAppRestFul.Utilities.Dtos
 {
     public class PagedResult<T>
     {

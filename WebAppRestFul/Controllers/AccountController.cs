@@ -17,8 +17,8 @@ using System.Threading.Tasks;
 using WebAppRestFul.Constants;
 using WebAppRestFul.Extensions;
 using WebAppRestFul.Filters;
-using WebAppRestFul.Models;
-using WebAppRestFul.ViewModels;
+using WebAppRestFul.Data.Models;
+using WebAppRestFul.Data.ViewModels;
 
 namespace WebAppRestFul.Controllers
 {

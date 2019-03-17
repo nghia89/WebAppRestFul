@@ -4787,6 +4787,30 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "WebAppRestFul.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Dapper": "1.50.1",
+          "WWebAppRestFul.Utilities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/WebAppRestFul.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WebAppRestFul.Data.dll": {}
+        }
+      },
+      "WWebAppRestFul.Utilities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/WWebAppRestFul.Utilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WWebAppRestFul.Utilities.dll": {}
+        }
       }
     }
   },
@@ -8126,7 +8150,7 @@
       ]
     },
     "Newtonsoft.Json/11.0.2": {
-      "sha512": "znZGbws7E4BA9jxNZ7FuiIRI3C9hrgatVQSTKhIYZYNOud4M5VfGlTYi6RdYO5sQrebFuF/g9UEV3hOxDMXF6Q==",
+      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
       "type": "package",
       "path": "newtonsoft.json/11.0.2",
       "files": [
@@ -13063,6 +13087,16 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "WebAppRestFul.Data/1.0.0": {
+      "type": "project",
+      "path": "../WebAppRestFul.Data/WebAppRestFul.Data.csproj",
+      "msbuildProject": "../WebAppRestFul.Data/WebAppRestFul.Data.csproj"
+    },
+    "WWebAppRestFul.Utilities/1.0.0": {
+      "type": "project",
+      "path": "../WWebAppRestFul.Utilities/WWebAppRestFul.Utilities.csproj",
+      "msbuildProject": "../WWebAppRestFul.Utilities/WWebAppRestFul.Utilities.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -13072,7 +13106,8 @@
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.0",
-      "Swashbuckle.AspNetCore >= 4.0.1"
+      "Swashbuckle.AspNetCore >= 4.0.1",
+      "WebAppRestFul.Data >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -13104,7 +13139,11 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\WebAppRestFul\\WebAppRestFul.Data\\WebAppRestFul.Data.csproj": {
+              "projectPath": "D:\\WebAppRestFul\\WebAppRestFul.Data\\WebAppRestFul.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

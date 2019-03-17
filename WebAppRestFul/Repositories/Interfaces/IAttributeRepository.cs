@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebAppRestFul.ViewModels;
+using WebAppRestFul.Data.ViewModels;
 
 namespace WebAppRestFul.Repositories.Interfaces
 {

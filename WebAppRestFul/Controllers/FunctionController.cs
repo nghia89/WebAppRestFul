@@ -8,9 +8,9 @@ using Dapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using WebAppRestFul.Dtos;
 using WebAppRestFul.Filters;
-using WebAppRestFul.Models;
+using WebAppRestFul.Data.Models;
+using WebAppRestFul.Utilities.Dtos;
 
 namespace WebAppRestFul.Controllers
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebAppRestFul.Models
+namespace WebAppRestFul.Data.Models
 {
     public class Function
     {

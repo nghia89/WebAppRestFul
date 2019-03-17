@@ -1,14 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebAppRestFul.Moadels
+namespace WebAppRestFul.Data.Models
 {
     public class Product
     {
         public int Id { get; set; }
 
         [Required(ErrorMessage = "RequiredErrorMsg")]
-        [StringLength(8, ErrorMessage = "MinAndMaxLengthErrorMsg", MinimumLength = 6)]
         public string Sku { get; set; }
 
         [Required(ErrorMessage = "RequiredErrorMsg")]

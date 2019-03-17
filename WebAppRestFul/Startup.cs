@@ -14,7 +14,9 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using WebAppRestFul.Data;
-using WebAppRestFul.Models;
+using WebAppRestFul.Data.Models;
+using WebAppRestFul.Data.Repositories;
+using WebAppRestFul.Data.Repositories.Interface;
 using WebAppRestFul.Resources;
 
 namespace WebAppRestFul
@@ -33,6 +35,7 @@ namespace WebAppRestFul
         {
             services.AddTransient<IUserStore<AppUser>, UserStore>();
             services.AddTransient<IRoleStore<AppRole>, RoleStore>();
+            services.AddTransient<IProductRepository, ProductRepository>();
             services.AddIdentity<AppUser, AppRole>()
                .AddDefaultTokenProviders();
             services.Configure<IdentityOptions>(opt =>

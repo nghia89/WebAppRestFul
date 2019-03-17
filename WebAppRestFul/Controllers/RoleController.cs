@@ -8,9 +8,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using WebAppRestFul.Dtos;
 using WebAppRestFul.Filters;
-using WebAppRestFul.Models;
+using WebAppRestFul.Data.Models;
+using WebAppRestFul.Utilities.Dtos;
 
 namespace WebAppRestFul.Controllers
 {

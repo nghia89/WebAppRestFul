@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Threading.Tasks;
 using WebAppRestFul.Filters;
 using WebAppRestFul.Repositories.Interfaces;
-using WebAppRestFul.ViewModels;
+using WebAppRestFul.Data.ViewModels;
 
 namespace WebAppRestFul.Controllers
 {

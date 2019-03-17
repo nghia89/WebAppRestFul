@@ -37,3 +37,8 @@ D:\WebAppRestFul\WebAppRestFul\bin\Debug\netcoreapp2.2\en\WebAppRestFul.resource
 D:\WebAppRestFul\WebAppRestFul\bin\Debug\netcoreapp2.2\vi\WebAppRestFul.resources.dll
 D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\en\WebAppRestFul.resources.dll
 D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\vi\WebAppRestFul.resources.dll
+D:\WebAppRestFul\WebAppRestFul\bin\Debug\netcoreapp2.2\WebAppRestFul.Data.dll
+D:\WebAppRestFul\WebAppRestFul\bin\Debug\netcoreapp2.2\WWebAppRestFul.Utilities.dll
+D:\WebAppRestFul\WebAppRestFul\bin\Debug\netcoreapp2.2\WebAppRestFul.Data.pdb
+D:\WebAppRestFul\WebAppRestFul\bin\Debug\netcoreapp2.2\WWebAppRestFul.Utilities.pdb
+D:\WebAppRestFul\WebAppRestFul\obj\Debug\netcoreapp2.2\WebAppRestFul.csproj.CopyComplete

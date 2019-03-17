@@ -29,7 +29,8 @@
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.0",
-          "Swashbuckle.AspNetCore": "4.0.1"
+          "Swashbuckle.AspNetCore": "4.0.1",
+          "WebAppRestFul.Data": "1.0.0"
         },
         "runtime": {
           "WebAppRestFul.dll": {}
@@ -605,6 +606,26 @@
         }
       },
       "System.Reflection.TypeExtensions/4.4.0": {},
+      "WebAppRestFul.Data/1.0.0": {
+        "dependencies": {
+          "Dapper": "1.50.5",
+          "WWebAppRestFul.Utilities": "1.0.0"
+        },
+        "runtime": {
+          "WebAppRestFul.Data.dll": {}
+        },
+        "compile": {
+          "WebAppRestFul.Data.dll": {}
+        }
+      },
+      "WWebAppRestFul.Utilities/1.0.0": {
+        "runtime": {
+          "WWebAppRestFul.Utilities.dll": {}
+        },
+        "compile": {
+          "WWebAppRestFul.Utilities.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "dependencies": {
           "Newtonsoft.Json": "11.0.2",
@@ -3836,6 +3857,16 @@
       "path": "system.reflection.typeextensions/4.4.0",
       "hashPath": "system.reflection.typeextensions.4.4.0.nupkg.sha512"
     },
+    "WebAppRestFul.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WWebAppRestFul.Utilities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "type": "package",
       "serviceable": true,
@@ -4994,7 +5025,7 @@
     "Newtonsoft.Json/11.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-znZGbws7E4BA9jxNZ7FuiIRI3C9hrgatVQSTKhIYZYNOud4M5VfGlTYi6RdYO5sQrebFuF/g9UEV3hOxDMXF6Q==",
+      "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
       "path": "newtonsoft.json/11.0.2",
       "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
     },

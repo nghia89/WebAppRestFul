@@ -16,17 +16,16 @@ namespace WebAppRestFul.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoleController : ControllerBase
+    public class UserController : ControllerBase
     {
-        private readonly RoleManager<AppRole> _roleManager;
+        private readonly UserManager<AppUser> _userManager;
         private readonly string _connectionString;
 
-        public RoleController(RoleManager<AppRole> roleManager, IConfiguration configuration)
+        public UserController(UserManager<AppUser> userManager, IConfiguration configuration)
         {
-            _roleManager = roleManager;
+            _userManager = userManager;
             _connectionString = configuration.GetConnectionString("DbConnectionString");
         }
-
         // GET: api/Product
         [HttpGet]
         public async Task<IActionResult> Get()
@@ -36,7 +35,7 @@ namespace WebAppRestFul.Controllers
                 if (conn.State == ConnectionState.Closed)
                     conn.Open();
                 var paramaters = new DynamicParameters();
-                var result = await conn.QueryAsync<AppRole>("Get_Role_All", paramaters, null, null, CommandType.StoredProcedure);
+                var result = await conn.QueryAsync<AppUser>("Get_User_All", paramaters, null, null, CommandType.StoredProcedure);
                 return Ok(result);
             }
         }
@@ -45,7 +44,7 @@ namespace WebAppRestFul.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
-            return Ok(await _roleManager.FindByIdAsync(id));
+            return Ok(await _userManager.FindByIdAsync(id));
         }
 
         [HttpGet("paging")]
@@ -62,11 +61,11 @@ namespace WebAppRestFul.Controllers
                 paramaters.Add("@pageSize", pageSize);
                 paramaters.Add("@totalRow", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var result = await conn.QueryAsync<AppRole>("Get_Role_AllPaging", paramaters, null, null, CommandType.StoredProcedure);
+                var result = await conn.QueryAsync<AppUser>("Get_User_AllPaging", paramaters, null, null, CommandType.StoredProcedure);
 
                 int totalRow = paramaters.Get<int>("@totalRow");
 
-                var pagedResult = new PagedResult<AppRole>()
+                var pagedResult = new PagedResult<AppUser>()
                 {
                     Items = result.ToList(),
                     TotalRow = totalRow,
@@ -81,9 +80,9 @@ namespace WebAppRestFul.Controllers
         // POST: api/Role
         [HttpPost]
         [ValidateModel]
-        public async Task<IActionResult> Post([FromBody] AppRole role)
+        public async Task<IActionResult> Post([FromBody] AppUser user)
         {
-            var result = await _roleManager.CreateAsync(role);
+            var result = await _userManager.CreateAsync(user);
             if (result.Succeeded)
                 return Ok();
             return BadRequest();
@@ -91,10 +90,10 @@ namespace WebAppRestFul.Controllers
 
         // PUT: api/Role/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put([Required]Guid id, [FromBody] AppRole role)
+        public async Task<IActionResult> Put([Required]Guid id, [FromBody] AppUser user)
         {
-            role.Id = id;
-            var result = await _roleManager.UpdateAsync(role);
+            user.Id = id;
+            var result = await _userManager.UpdateAsync(user);
             if (result.Succeeded)
                 return Ok();
             return BadRequest();
@@ -104,8 +103,8 @@ namespace WebAppRestFul.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
-            var role = await _roleManager.FindByIdAsync(id);
-            var result = await _roleManager.DeleteAsync(role);
+            var user = await _userManager.FindByIdAsync(id);
+            var result = await _userManager.DeleteAsync(user);
             if (result.Succeeded)
                 return Ok();
             return BadRequest();

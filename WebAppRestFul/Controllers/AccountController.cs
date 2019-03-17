@@ -1,37 +1,45 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Dapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using WebAppRestFul.Constants;
 using WebAppRestFul.Extensions;
 using WebAppRestFul.Filters;
 using WebAppRestFul.Models;
 using WebAppRestFul.ViewModels;
-using System;
-using System.Security.Claims;
-using Newtonsoft.Json;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace WebAppRestFul.Controllers
 {
-    [Route("api/{culture}/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    [MiddlewareFilter(typeof(LocalizationPipeline))]
     [Authorize]
     public class AccountController : ControllerBase
     {
         private readonly IConfiguration _configuration;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
+        private readonly string _connectionString;
 
         public AccountController(IConfiguration configuration, SignInManager<AppUser> signInManager,
-                                 UserManager<AppUser> userManager)
+             UserManager<AppUser> userManager)
         {
             _configuration = configuration;
             _signInManager = signInManager;
             _userManager = userManager;
+            _configuration = configuration;
+            _connectionString = configuration.GetConnectionString("DbConnectionString");
         }
 
         [HttpPost]
@@ -70,16 +78,16 @@ namespace WebAppRestFul.Controllers
                 if (!result.Succeeded)
                     return BadRequest("Mật khẩu không đúng");
                 var roles = await _userManager.GetRolesAsync(user);
-                //var permissions = await GetPermissionByUserId(user.Id.ToString());
+                var permissions = await GetPermissionByUserId(user.Id.ToString());
                 var claims = new[]
                 {
                     new Claim("Email", user.Email),
-                    //new Claim(SystemConstants.UserClaim.Id, user.Id.ToString()),
-                    //new Claim(ClaimTypes.Name, user.UserName),
-                    //new Claim(SystemConstants.UserClaim.FullName, user.FullName??string.Empty),
-                    //new Claim(SystemConstants.UserClaim.Roles, string.Join(";", roles)),
-                    //new Claim(SystemConstants.UserClaim.Permissions, JsonConvert.SerializeObject(permissions)),
-                    //new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                   new Claim(SystemConstants.UserClaim.Id, user.Id.ToString()),
+                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(SystemConstants.UserClaim.FullName, user.FullName??string.Empty),
+                    new Claim(SystemConstants.UserClaim.Roles, string.Join(";", roles)),
+                    new Claim(SystemConstants.UserClaim.Permissions, JsonConvert.SerializeObject(permissions)),
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                 };
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -93,6 +101,21 @@ namespace WebAppRestFul.Controllers
                 return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
             }
             return NotFound($"Không tìm thấy tài khoản {model.UserName}");
+        }
+
+        private async Task<List<string>> GetPermissionByUserId(string userId)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+
+                var paramaters = new DynamicParameters();
+                paramaters.Add("@userId", userId);
+
+                var result = await conn.QueryAsync<string>("Get_Permission_ByUserId", paramaters, null, null, CommandType.StoredProcedure);
+                return result.ToList();
+            }
         }
     }
 }
